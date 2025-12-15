@@ -82,19 +82,7 @@ const Projects = () => {
                                 ))}
                             </div>
 
-                            {project.link && (
-                                <div className="project-links" style={{ marginTop: '1.5rem' }}>
-                                    <a
-                                        href={project.link}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="btn btn-secondary"
-                                        style={{ fontSize: '0.875rem', padding: '0.5rem 1rem' }}
-                                    >
-                                        View Code ↗
-                                    </a>
-                                </div>
-                            )}
+
                         </div>
                     ))}
                 </div>
