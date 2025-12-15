@@ -1,9 +1,10 @@
 import React from 'react';
 import './Contact.css';
+import SectionWrapper from './SectionWrapper';
 
 const Contact = () => {
     return (
-        <section id="contact" className="contact section">
+        <SectionWrapper id="contact" className="contact section">
             <div className="container">
                 <h2 className="section-title">Get In Touch</h2>
 
@@ -61,7 +62,7 @@ const Contact = () => {
                     <p>© 2025 Kashyup Gaud. Built with React ⚛️</p>
                 </footer>
             </div>
-        </section>
+        </SectionWrapper>
     );
 };
 

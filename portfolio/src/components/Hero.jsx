@@ -1,32 +1,12 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import DecryptedText from './DecryptedText';
 import RotatingText from './RotatingText';
+import SectionWrapper from './SectionWrapper';
 import './Hero.css';
 
 const Hero = () => {
-    const heroRef = useRef(null);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate-fade-in-up');
-                    }
-                });
-            },
-            { threshold: 0.1 }
-        );
-
-        if (heroRef.current) {
-            observer.observe(heroRef.current);
-        }
-
-        return () => observer.disconnect();
-    }, []);
-
     return (
-        <section id="home" className="hero section" ref={heroRef}>
+        <SectionWrapper id="home" className="hero section" delay={0.2}>
             <div className="container">
                 <div className="hero-content">
                     <div className="hero-text">
@@ -115,7 +95,7 @@ const Hero = () => {
                 <div className="gradient-orb orb-2"></div>
                 <div className="gradient-orb orb-3"></div>
             </div>
-        </section>
+        </SectionWrapper>
     );
 };
 

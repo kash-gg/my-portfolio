@@ -1,5 +1,6 @@
 import React from 'react';
 import './Skills.css';
+import SectionWrapper from './SectionWrapper';
 
 const Skills = () => {
     const skills = [
@@ -22,7 +23,7 @@ const Skills = () => {
     ];
 
     return (
-        <section id="skills" className="skills section">
+        <SectionWrapper id="skills" className="skills section">
             <div className="container">
                 <h2 className="section-title">Skills & Technologies</h2>
 
@@ -38,7 +39,7 @@ const Skills = () => {
                     </div>
                 </div>
             </div>
-        </section>
+        </SectionWrapper>
     );
 };
 

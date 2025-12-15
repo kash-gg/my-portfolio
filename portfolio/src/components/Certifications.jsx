@@ -1,5 +1,6 @@
 import React from 'react';
 import './Certifications.css';
+import SectionWrapper from './SectionWrapper';
 
 const Certifications = () => {
     const certifications = [
@@ -21,7 +22,7 @@ const Certifications = () => {
     ];
 
     return (
-        <section id="certifications" className="certifications section">
+        <SectionWrapper id="certifications" className="certifications section">
             <div className="container">
                 <h2 className="section-title">Certifications</h2>
 
@@ -36,7 +37,7 @@ const Certifications = () => {
                     ))}
                 </div>
             </div>
-        </section>
+        </SectionWrapper>
     );
 };
 

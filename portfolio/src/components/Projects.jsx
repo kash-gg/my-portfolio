@@ -1,8 +1,21 @@
 import React from 'react';
 import './Projects.css';
+import SectionWrapper from './SectionWrapper';
 
 const Projects = () => {
     const projects = [
+        {
+            title: 'Self-Sovereign Identity (SSI) Mobile App',
+            year: '2025',
+            description: 'A mobile application for Academic Credential Verification using Decentralized Identity (DID) principles.',
+            highlights: [
+                'DID generation and wallet management',
+                'Verifiable Credentials & Selective Disclosure',
+                'Role-based ecosystem (Issuer, Holder, Verifier)'
+            ],
+            tech: ['React Native', 'Node.js', 'Express', 'MongoDB', 'Hyperledger Aries'],
+            link: 'https://github.com/kash-gg/Project_SSI'
+        },
         {
             title: 'Fraud Detection using Blockchain and Machine Learning',
             year: '2024',
@@ -16,7 +29,7 @@ const Projects = () => {
         },
         {
             title: 'NGO Website - Zunj Divyang Sanstha',
-            year: '2024',
+            year: '2025',
             description: 'Full-stack website for an NGO with integrated payment gateway, admin panel, and blog system for specially-abled individuals.',
             highlights: [
                 ' Secure Payment Gateway Integration',
@@ -40,7 +53,7 @@ const Projects = () => {
     ];
 
     return (
-        <section id="projects" className="projects section">
+        <SectionWrapper id="projects" className="projects section">
             <div className="container">
                 <h2 className="section-title">Featured Projects</h2>
 
@@ -68,11 +81,25 @@ const Projects = () => {
                                     <span key={i} className="tech-tag">{tech}</span>
                                 ))}
                             </div>
+
+                            {project.link && (
+                                <div className="project-links" style={{ marginTop: '1.5rem' }}>
+                                    <a
+                                        href={project.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="btn btn-secondary"
+                                        style={{ fontSize: '0.875rem', padding: '0.5rem 1rem' }}
+                                    >
+                                        View Code ↗
+                                    </a>
+                                </div>
+                            )}
                         </div>
                     ))}
                 </div>
             </div>
-        </section>
+        </SectionWrapper>
     );
 };
 

@@ -6,7 +6,7 @@ import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Certifications from './components/Certifications';
 import Contact from './components/Contact';
-import LetterGlitch from './components/LetterGlitch';
+
 import './App.css';
 
 function App() {
@@ -26,15 +26,7 @@ function App() {
 
   return (
     <div className="app">
-      <div className="glitch-background">
-        <LetterGlitch
-          glitchSpeed={50}
-          centerVignette={true}
-          outerVignette={false}
-          smooth={true}
-          glitchColors={['#8b5cf6', '#a78bfa', '#c4b5fd']}
-        />
-      </div>
+
       <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       <Hero />
       <About />

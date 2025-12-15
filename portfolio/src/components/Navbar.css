@@ -17,6 +17,11 @@
     padding: var(--spacing-sm) 0;
 }
 
+.navbar-hidden {
+    transform: translateY(-100%);
+    pointer-events: none;
+}
+
 .dark .navbar.scrolled {
     background: rgba(15, 15, 15, 0.95);
 }

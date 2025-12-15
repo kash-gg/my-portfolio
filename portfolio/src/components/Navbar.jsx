@@ -5,13 +5,29 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
 
+    const [isVisible, setIsVisible] = useState(true);
+    const [lastScrollY, setLastScrollY] = useState(0);
+
     useEffect(() => {
         const handleScroll = () => {
-            setScrolled(window.scrollY > 50);
+            const currentScrollY = window.scrollY;
+
+            // Determine scroll direction
+            if (currentScrollY > lastScrollY && currentScrollY > 70) {
+                // Scrolling down & past the top area
+                setIsVisible(false);
+            } else {
+                // Scrolling up
+                setIsVisible(true);
+            }
+
+            setScrolled(currentScrollY > 50);
+            setLastScrollY(currentScrollY);
         };
+
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    }, [lastScrollY]);
 
     const navLinks = [
         { href: '#home', label: 'Home' },
@@ -22,7 +38,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
     ];
 
     return (
-        <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+        <nav className={`navbar ${scrolled ? 'scrolled' : ''} ${!isVisible ? 'navbar-hidden' : ''}`}>
             <div className="container navbar-container">
                 <a href="#home" className="logo gradient-text">
                     KG
