@@ -1,76 +1,70 @@
-import React, { useState, useEffect } from 'react';
-import './Navbar.css';
+import React from "react";
+import { Dock, DockIcon } from "./magicui/dock";
+import { ModeToggle } from "./mode-toggle";
+import { buttonVariants } from "./ui/button";
+import { Separator } from "./ui/separator";
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipTrigger,
+    TooltipProvider,
+} from "./ui/tooltip";
+import { DATA } from "../data/resume";
+import { cn } from "../lib/utils";
 
-const Navbar = ({ darkMode, toggleDarkMode }) => {
-    const [scrolled, setScrolled] = useState(false);
-    const [menuOpen, setMenuOpen] = useState(false);
-
-    const [isVisible, setIsVisible] = useState(true);
-    const [lastScrollY, setLastScrollY] = useState(0);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            const currentScrollY = window.scrollY;
-
-            // Determine scroll direction
-            if (currentScrollY > lastScrollY && currentScrollY > 70) {
-                // Scrolling down & past the top area
-                setIsVisible(false);
-            } else {
-                // Scrolling up
-                setIsVisible(true);
-            }
-
-            setScrolled(currentScrollY > 50);
-            setLastScrollY(currentScrollY);
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, [lastScrollY]);
-
-    const navLinks = [
-        { href: '#home', label: 'Home' },
-        { href: '#about', label: 'About' },
-        { href: '#projects', label: 'Projects' },
-        { href: '#skills', label: 'Skills' },
-        { href: '#contact', label: 'Contact' }
-    ];
-
+export default function Navbar({ darkMode, toggleDarkMode }) {
     return (
-        <nav className={`navbar ${scrolled ? 'scrolled' : ''} ${!isVisible ? 'navbar-hidden' : ''}`}>
-            <div className="container navbar-container">
-                <a href="#home" className="logo gradient-text">
-                    KG
-                </a>
-
-                <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
-                    {navLinks.map((link) => (
-                        <a
-                            key={link.href}
-                            href={link.href}
-                            className="nav-link"
-                            onClick={() => setMenuOpen(false)}
-                        >
-                            {link.label}
-                        </a>
+        <TooltipProvider delayDuration={0}>
+            <div className="pointer-events-none fixed inset-x-0 bottom-0 z-30 mx-auto mb-4 flex origin-bottom h-full max-h-14 justify-center">
+                <div className="fixed bottom-0 inset-x-0 h-16 w-full bg-background to-transparent backdrop-blur-lg [-webkit-mask-image:linear-gradient(to_top,black,transparent)] dark:bg-background"></div>
+                <Dock className="z-50 pointer-events-auto relative mx-auto flex min-h-full h-full items-center px-1 bg-background [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)] transform-gpu dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] ">
+                    {DATA.navbar.map((item) => (
+                        <DockIcon key={item.href}>
+                            <Tooltip>
+                                <TooltipTrigger asChild>
+                                    <a
+                                        href={item.href}
+                                        className={cn(
+                                            buttonVariants({ variant: "ghost", size: "icon" }),
+                                            "size-12"
+                                        )}
+                                    >
+                                        <item.icon className="size-4" />
+                                    </a>
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                    <p>{item.label}</p>
+                                </TooltipContent>
+                            </Tooltip>
+                        </DockIcon>
                     ))}
-                </div>
-
-                <div className="nav-actions">
-                    <button
-                        className="menu-toggle"
-                        onClick={() => setMenuOpen(!menuOpen)}
-                        aria-label="Toggle menu"
-                    >
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                </div>
+                    <Separator orientation="vertical" className="h-full" />
+                    {Object.entries(DATA.contact.social)
+                        .filter(([_, social]) => social.navbar)
+                        .map(([name, social]) => (
+                            <DockIcon key={name}>
+                                <Tooltip>
+                                    <TooltipTrigger asChild>
+                                        <a
+                                            href={social.url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className={cn(
+                                                buttonVariants({ variant: "ghost", size: "icon" }),
+                                                "size-12"
+                                            )}
+                                        >
+                                            <social.icon className="size-4" />
+                                        </a>
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                        <p>{name}</p>
+                                    </TooltipContent>
+                                </Tooltip>
+                            </DockIcon>
+                        ))}
+                </Dock>
             </div>
-        </nav>
+        </TooltipProvider>
     );
-};
-
-export default Navbar;
+}
