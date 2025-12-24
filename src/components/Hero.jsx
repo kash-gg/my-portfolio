@@ -50,9 +50,10 @@ const Hero = () => {
                             <a href="#projects" className="btn btn-primary">
                                 View My Work
                             </a>
-                            <a href="#contact" className="btn btn-secondary">
-                                Get In Touch
+                            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-secondary">
+                                Resume
                             </a>
+
                         </div>
                         <div className="hero-social">
                             <a

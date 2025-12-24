@@ -1,4 +1,4 @@
-import { Home, User, Briefcase, Code, Award, Mail, Github, Linkedin, Twitter } from "lucide-react";
+import { Home, User, Briefcase, Code, Award, Mail, Github, Linkedin, Twitter, FileText } from "lucide-react";
 
 export const DATA = {
     name: "Kashyup Gaud",
@@ -11,6 +11,7 @@ export const DATA = {
         { href: "#projects", icon: Code, label: "Projects" },
         { href: "#skills", icon: Briefcase, label: "Skills" },
         { href: "#certifications", icon: Award, label: "Certifications" },
+        { href: "/resume.pdf", icon: FileText, label: "Resume" },
         // { href: "#contact", icon: Mail, label: "Contact" }, // Contact is usually in social or separate
     ],
     contact: {

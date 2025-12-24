@@ -33,7 +33,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
                                     </a>
                                 </TooltipTrigger>
                                 <TooltipContent>
-                                    <p>{item.label}</p>
+                                    <span>{item.label}</span>
                                 </TooltipContent>
                             </Tooltip>
                         </DockIcon>
@@ -58,7 +58,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
                                         </a>
                                     </TooltipTrigger>
                                     <TooltipContent>
-                                        <p>{name}</p>
+                                        <span>{name}</span>
                                     </TooltipContent>
                                 </Tooltip>
                             </DockIcon>
