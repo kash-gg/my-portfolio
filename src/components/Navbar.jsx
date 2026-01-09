@@ -13,6 +13,40 @@ import { DATA } from "../data/resume";
 import { cn } from "../lib/utils";
 
 export default function Navbar({ darkMode, toggleDarkMode }) {
+    const handleScroll = (e, href) => {
+        e.preventDefault();
+
+        if (href === "#contact") {
+            const footer = document.querySelector("#contact");
+            if (footer) {
+                footer.scrollIntoView({ behavior: "smooth" });
+            }
+            return;
+        }
+
+        const wrapper = document.querySelector("#horizontal-wrapper");
+        if (!wrapper) return;
+
+        const sectionProgress = {
+            "#home": 0,
+            "#about": 0.25,
+            "#projects": 0.5,
+            "#skills": 0.75,
+            "#certifications": 1.0
+        };
+
+        if (sectionProgress.hasOwnProperty(href)) {
+            const progress = sectionProgress[href];
+            const scrollableHeight = wrapper.offsetHeight - window.innerHeight;
+            const targetScroll = wrapper.offsetTop + (progress * scrollableHeight);
+
+            window.scrollTo({
+                top: targetScroll,
+                behavior: "smooth"
+            });
+        }
+    };
+
     return (
         <TooltipProvider delayDuration={0}>
             <div className="pointer-events-none fixed inset-x-0 bottom-0 z-30 mx-auto mb-4 flex origin-bottom h-full max-h-14 justify-center">
@@ -24,6 +58,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
                                 <TooltipTrigger asChild>
                                     <a
                                         href={item.href}
+                                        onClick={(e) => handleScroll(e, item.href)}
                                         className={cn(
                                             buttonVariants({ variant: "ghost", size: "icon" }),
                                             "size-12"

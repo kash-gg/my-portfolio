@@ -1,7 +1,4 @@
-.about {
-    background: var(--bg-secondary);
-}
-
+/* .about styles handled by HorizontalLayout.css */
 .about-content {
     max-width: 900px;
     margin: 0 auto;

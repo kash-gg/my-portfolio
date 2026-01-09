@@ -5,9 +5,11 @@ import About from './components/About';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Certifications from './components/Certifications';
-import Contact from './components/Contact';
+import Footer from './components/Footer';
+import HorizontalScrollWrapper from './components/HorizontalScrollWrapper';
 
 import './App.css';
+import './components/HorizontalLayout.css';
 
 function App() {
   // Always use dark mode
@@ -26,14 +28,19 @@ function App() {
 
   return (
     <div className="app">
-
       <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-      <Hero />
-      <About />
-      <Projects />
-      <Skills />
-      <Certifications />
-      <Contact />
+
+      {/* Horizontal Scroll Section */}
+      <HorizontalScrollWrapper>
+        <Hero />
+        <About />
+        <Projects />
+        <Skills />
+        <Certifications />
+      </HorizontalScrollWrapper>
+
+      {/* Vertical Scroll Section */}
+      <Footer />
     </div>
   );
 }

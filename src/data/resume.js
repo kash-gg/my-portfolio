@@ -12,7 +12,7 @@ export const DATA = {
         { href: "#skills", icon: Briefcase, label: "Skills" },
         { href: "#certifications", icon: Award, label: "Certifications" },
         { href: "/resume.pdf", icon: FileText, label: "Resume" },
-        // { href: "#contact", icon: Mail, label: "Contact" }, // Contact is usually in social or separate
+        { href: "#contact", icon: Mail, label: "Contact" },
     ],
     contact: {
         social: {
@@ -24,7 +24,7 @@ export const DATA = {
             },
             LinkedIn: {
                 name: "LinkedIn",
-                url: "https://www.linkedin.com/in/kashyup-gaud-86525018b",
+                url: "https://www.linkedin.com/in/kashyup-gaud-865a50186/",
                 icon: Linkedin,
                 navbar: true,
             },

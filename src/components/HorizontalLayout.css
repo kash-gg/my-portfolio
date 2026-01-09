@@ -1,0 +1,71 @@
+/* Horizontal Scroll Alignment Fixes */
+
+/* Force all sections inside the horizontal wrapper to be full screen panels */
+.hero,
+.about,
+.projects,
+.skills,
+.certifications {
+    width: 100vw !important;
+    height: 100vh !important;
+    min-width: 100vw !important;
+    flex-shrink: 0 !important;
+
+    /* Ensure content is centered or properly placed */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    /* Force horizontal centering of the container */
+
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    padding: 0 !important;
+    /* Remove padding to handle it in container */
+
+    position: relative;
+}
+
+/* Ensure container also respects this */
+.container {
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 2rem;
+    margin: 0 auto;
+    /* Ensure the container itself doesn't overflow vertically if not needed */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+/* Specific Alignment Tweaks */
+.projects-grid {
+    max-height: 80vh;
+    overflow-y: auto;
+    padding-right: 1rem;
+    width: 100%;
+}
+
+.about-content,
+.skills-content {
+    max-width: 900px;
+    width: 100%;
+}
+
+/* Hero Specifics Override */
+.hero-content {
+    text-align: left;
+    /* Keep text left aligned even if container is centered */
+    width: 100%;
+}
+
+/* Hide scrollbars for cleaner look */
+.app ::-webkit-scrollbar {
+    display: none;
+}
+
+.app {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}

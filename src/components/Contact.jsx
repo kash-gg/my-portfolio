@@ -42,7 +42,7 @@ const Contact = () => {
                         </a>
 
                         <a
-                            href="https://www.linkedin.com/in/kashyup-gaud-86525018b"
+                            href="https://www.linkedin.com/in/kashyup-gaud-865a50186/"
                             className="contact-card card"
                             target="_blank"
                             rel="noopener noreferrer"
